@@ -4,14 +4,14 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline'
 import { sidebarItems } from './data/SiderbarData'
 import AddIcon from '@material-ui/icons/Add'
 import db from '../firebase'
-import {useHistory} from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 
 const Sidebar = (props) => {
 
     const history = useHistory();
 
-    const goToChannel = (id)=>{
-        if(id){
+    const goToChannel = (id) => {
+        if (id) {
             history.push(`/room/${id}`)
         }
     }
@@ -19,9 +19,9 @@ const Sidebar = (props) => {
 
     const addChannel = () => {
         const propsName = prompt('Enter Channel Name');
-        if(propsName){
+        if (propsName) {
             db.collection('rooms').add({
-                name:propsName
+                name: propsName
             })
         }
     }
@@ -30,7 +30,9 @@ const Sidebar = (props) => {
         <Container>
             <WorkspaceContainer>
                 <Name>
-                    Duy
+                    <Link to="/" style={{ color: '#919293', textDecoration: 'none', fontWeight: '700', fontSize: '18px' }} >
+                        Slack App
+                    </Link>
                 </Name>
                 <NewMessage>
                     <AddCircleOutlineIcon />
@@ -60,7 +62,7 @@ const Sidebar = (props) => {
                 <ChannelsList>
                     {
                         props.rooms.map(item => (
-                            <Channel onClick={()=>goToChannel(item.id)} > 
+                            <Channel onClick={() => goToChannel(item.id)} >
                                 # {item.name}
                             </Channel>
                         )
@@ -74,11 +76,12 @@ const Sidebar = (props) => {
     )
 }
 
+
 export default Sidebar
 
 
 const Container = styled.div`
-    background:#3F0E40;
+    background:#121416;
 
 `
 
@@ -89,11 +92,10 @@ const WorkspaceContainer = styled.div`
     align-items:center;
     padding-left:16px;
     justify-content: space-between;
-    border-bottom: 1px solid #532753;
+    border-bottom: 1px solid #454749  ;
 
 `
 const Name = styled.div`
-
 `
 
 const NewMessage = styled.div`
@@ -101,13 +103,14 @@ const NewMessage = styled.div`
     height:36px;
     background: white;
     border-radius:50%;
-    color: #3F0E40;
-    fill:#3F0E40;
+    color: #111;
+    fill:#111;
     display:flex;
     justify-content:center;
     align-items:center;
     cursor:pointer;
     margin-right:20px;
+    background:#ff5500;
     
 `
 
@@ -125,8 +128,9 @@ const MainChannelItem = styled.div`
     cursor:pointer;
     margin-top:3px;
     :hover {
-        background:#350D36;
+        background:#454749;
     }
+    color:#919293
 `
 
 const ChannelsContainer = styled.div`
@@ -143,9 +147,10 @@ const NewChannelContainer = styled.div`
     padding-left:10px;
     padding-right:10px;
     cursor:pointer;
+    color:#919293;
 `
 const ChannelsList = styled.div`
-
+    color:#919293;
 `
 
 const Channel = styled.div`
@@ -155,6 +160,6 @@ const Channel = styled.div`
     padding-left:19px;
     cursor:pointer;
     :hover{
-        background:#350D36;
+        background:#454749;
     }
 `

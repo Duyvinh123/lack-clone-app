@@ -9,27 +9,27 @@ import MoreIcon from '@material-ui/icons/More'
 
 export const sidebarItems = [
     {
-        icon: <MessageIcon />,
+        icon: <MessageIcon style={{color:'#ff5500'}} />,
         text: 'Thread'
     },
     {
-        icon: <InboxIcon />,
+        icon: <InboxIcon style={{color:'#ff5500'}} />,
         text: 'All DMs'
     },
     {
-        icon: <DraftsIcon />,
+        icon: <DraftsIcon style={{color:'#ff5500'}} />,
         text: 'Mentions & Reactions'
     },
     {
-        icon: <BookmarkBorderIcon />,
+        icon: <BookmarkBorderIcon style={{color:'#ff5500'}} />,
         text: 'Save Items'
     },
     {
-        icon: <PeopleIcon />,
+        icon: <PeopleIcon style={{color:'#ff5500'}} />,
         text: 'Peoples & Group'
     },
     {
-        icon: <MoreIcon />,
+        icon: <MoreIcon style={{color:'#ff5500'}} />,
         text: 'More'
     }
 

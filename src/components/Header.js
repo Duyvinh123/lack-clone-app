@@ -2,8 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import AccessTimeIcon from '@material-ui/icons/AccessTime'
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline'
+import {useState} from 'react'
 
 const Header = ({user,logOut}) => {
+
+    const [toggle,setToggle] = useState(false)
+
     return (
         <Container>
 
@@ -21,8 +25,12 @@ const Header = ({user,logOut}) => {
                 <Name>
                     {user.name}
                 </Name>
-                <UserImage onClick={logOut}>
+                <UserImage onClick={()=>setToggle(!toggle)} >
                     <img src={user.photo ? user.photo : "https://lh3.googleusercontent.com/proxy/xnNjvUYWb12eyTf3EQIjvFuIzQqcEQnvEOaPpljiCGEbG9WV6_C3gAxo2jdkcz-9apuCKlDCxNqXNEcOLGN6h0fEHx9cC_kjj5NNCrNuS3mKeBSgZ1JrC7O_KR3FCxAzoQtyWe6T7TJshv1W"} />
+               { toggle?<LogOut>
+                    <h3>Profile</h3>
+                    <h3 onClick={logOut} >LogOut</h3>
+                </LogOut>:null }
                 </UserImage>
             </UserContainer>
         </Container>
@@ -42,8 +50,8 @@ const Main = styled.div`
 `
 
 const Container = styled.div`
-    background:#350d36;
-    color:white;
+    background:#010305;
+    color:#919293;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -68,7 +76,7 @@ const Search = styled.div`
         border:none;
         padding-left:8px;
         padding-right:8px;
-        color:white;
+        color:#919293;
         padding-top:4px;
         padding-bottom:4px;
     }
@@ -97,6 +105,24 @@ const UserImage = styled.div`
 
     img {
         width:100%;
-        border-radius:4px;
+        border-radius:50%;
+        cursor:pointer;
+    }
+`
+const LogOut = styled.div`
+    position: fixed;
+    top:32px;
+    right:3px;
+    background:#121416;
+    border-radius:4px;
+    overflow: hidden;
+    h3{
+        cursor:pointer;
+        margin-top:5px;
+
+        padding: 5px 10px;
+        :hover {
+            background:#454749;
+        }
     }
 `
